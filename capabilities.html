@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="EMS-IOT Manufacturing Capabilities — 12 SMT lines, DIP, conformal coating, box build, RF testing. Full NPI support in Shenzhen, China.">
+<title>Capabilities | EMS-IOT — SMT Assembly &amp; Manufacturing Services</title>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --cyan:#00F0FF;--amber:#FFB800;--dark:#060912;--surface:#0F1335;--surface2:#151A40;
+  --text:#E0E0E0;--text-dim:#8890B5;--border:#1E2460;--green:#00E676;
+  --font:'Segoe UI','Arial',system-ui,-apple-system,sans-serif;
+  --font-mono:'Cascadia Code','Consolas','Courier New',monospace;
+}
+html{scroll-behavior:smooth;background:var(--dark);color:var(--text);font-family:var(--font);line-height:1.6}
+body{overflow-x:hidden}
+
+.circuit-bg{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:.1}
+.circuit-bg::before{content:'';position:absolute;inset:0;
+  background-image:linear-gradient(90deg,var(--border) 1px,transparent 1px),linear-gradient(0deg,var(--border) 1px,transparent 1px);
+  background-size:50px 50px}
+
+nav{position:fixed;top:0;left:0;width:100%;z-index:1000;padding:0 2rem;background:rgba(6,9,18,.92);backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border)}
+nav .inner{max-width:1300px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
+nav .logo{font-family:var(--font-mono);font-size:1.3rem;font-weight:900;letter-spacing:.05em;color:var(--cyan);
+  text-decoration:none;display:flex;align-items:center;gap:.5rem}
+nav .logo .dot{width:8px;height:8px;background:var(--cyan);border-radius:50%;box-shadow:0 0 10px var(--cyan),0 0 20px var(--cyan);
+  animation:dotBlink 2s ease-in-out infinite}
+nav .links{display:flex;gap:2rem;list-style:none;align-items:center}
+nav .links a{color:var(--text-dim);text-decoration:none;font-size:.85rem;font-weight:600;letter-spacing:.08em;
+  text-transform:uppercase;transition:color .2s;position:relative}
+nav .links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--cyan);transition:width .25s}
+nav .links a:hover{color:var(--cyan)}
+nav .links a:hover::after{width:100%}
+nav .cta-btn{background:transparent;border:2px solid var(--cyan);color:var(--cyan);padding:.45rem 1.2rem;
+  font-size:.8rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;
+  transition:all .25s;text-decoration:none}
+nav .cta-btn:hover{background:var(--cyan);color:var(--dark);box-shadow:0 0 20px rgba(0,240,255,.4)}
+.menu-toggle{display:none;background:none;border:none;color:var(--cyan);font-size:1.6rem;cursor:pointer}
+@keyframes dotBlink{0%,100%{opacity:.4;transform:scale(1)}50%{opacity:1;transform:scale(1.8)}}
+
+.page-header{position:relative;z-index:1;padding:130px 2rem 3rem;text-align:center;border-bottom:1px solid var(--border)}
+.page-header h1{font-size:clamp(2rem,4vw,3.5rem);font-weight:900;letter-spacing:-.02em}
+.page-header h1 .cyan{color:var(--cyan)}
+.page-header p{color:var(--text-dim);max-width:620px;margin:.8rem auto 0;font-size:1rem}
+
+/* Process flow */
+.process-strip{position:relative;z-index:1;max-width:1300px;margin:0 auto;padding:3rem 2rem;
+  display:grid;grid-template-columns:repeat(5,1fr);gap:2px;background:var(--border)}
+@media(max-width:900px){.process-strip{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:550px){.process-strip{grid-template-columns:1fr 1fr}}
+.process-step{background:var(--surface);padding:2rem 1.2rem;text-align:center;transition:all .3s}
+.process-step:hover{background:var(--surface2)}
+.process-step .step-num{font-family:var(--font-mono);font-size:.7rem;color:var(--cyan);letter-spacing:.1em;margin-bottom:.5rem}
+.process-step .step-icon{font-size:2rem;margin-bottom:.5rem}
+.process-step h4{font-size:.85rem;margin-bottom:.3rem}
+.process-step p{font-size:.7rem;color:var(--text-dim);line-height:1.5}
+
+/* Capability cards */
+.section{position:relative;z-index:1;padding:5rem 2rem}
+.section .inner{max-width:1300px;margin:0 auto}
+.section h2{font-size:clamp(1.6rem,2.5vw,2.2rem);font-weight:900;margin-bottom:1rem;letter-spacing:-.01em}
+.section h2 .cyan{color:var(--cyan)}
+.section .sec-sub{color:var(--text-dim);margin-bottom:2.5rem;border-left:3px solid var(--amber);padding-left:1rem}
+
+.cap-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:2px;background:var(--border)}
+@media(max-width:440px){.cap-grid{grid-template-columns:1fr}}
+
+.cap-card{background:var(--surface);padding:2.5rem 2rem;position:relative;overflow:hidden}
+.cap-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:2px;background:var(--cyan);transform:scaleX(0);
+  transform-origin:left;transition:transform .35s}
+.cap-card:hover::before{transform:scaleX(1)}
+.cap-card:hover{background:var(--surface2)}
+
+.cap-card .cap-header{display:flex;align-items:flex-start;gap:1rem;margin-bottom:1rem}
+.cap-card .cap-num{font-family:var(--font-mono);font-size:2.2rem;font-weight:900;color:var(--cyan);opacity:.25;line-height:1}
+.cap-card h3{font-size:1.2rem;font-weight:700}
+.cap-card p{font-size:.82rem;color:var(--text-dim);line-height:1.7;margin-bottom:1.2rem}
+.cap-card ul{list-style:none}
+.cap-card ul li{font-size:.78rem;color:var(--text-dim);padding:.35rem 0;padding-left:1.2rem;position:relative}
+.cap-card ul li::before{content:'//';position:absolute;left:0;color:var(--cyan);font-family:var(--font-mono);font-size:.6rem;top:.4rem}
+
+/* Specs table */
+.specs-section{border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+  background:linear-gradient(180deg,rgba(0,240,255,.015) 0%,transparent 50%,rgba(255,184,0,.01) 100%)}
+.specs-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--border);max-width:1300px;margin:0 auto}
+@media(max-width:768px){.specs-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.specs-grid{grid-template-columns:1fr}}
+.spec-cell{background:var(--surface);padding:1.8rem 1.5rem;text-align:center}
+.spec-cell .s-val{font-size:1.3rem;font-weight:700;color:var(--cyan)}
+.spec-cell .s-label{font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:var(--text-dim);margin-top:.3rem}
+
+/* Equipment list */
+.equip-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:2px;background:var(--border);margin-top:2rem}
+.equip-item{background:var(--surface);padding:1.2rem;text-align:center}
+.equip-item .e-name{font-family:var(--font-mono);font-size:.78rem;font-weight:700;color:var(--amber);margin-bottom:.2rem}
+.equip-item .e-qty{font-size:.7rem;color:var(--text-dim)}
+
+/* Cert grid */
+.cert-grid-mini{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:2px;background:var(--border)}
+.cert-item{background:var(--surface);padding:1.5rem;text-align:center}
+.cert-item .c-badge{font-size:1.8rem;font-weight:900;color:var(--amber);margin-bottom:.4rem}
+.cert-item .c-name{font-size:.8rem;font-weight:700}
+.cert-item .c-desc{font-size:.68rem;color:var(--text-dim);margin-top:.2rem}
+
+/* CTA */
+.cta-section{position:relative;z-index:1;padding:5rem 2rem;text-align:center;
+  background:linear-gradient(180deg,transparent 0%,rgba(0,240,255,.025) 50%,transparent 100%);
+  border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.cta-section h2{font-size:clamp(1.5rem,2.5vw,2.2rem);font-weight:900;margin-bottom:.8rem}
+.cta-section p{color:var(--text-dim);max-width:480px;margin:0 auto 2rem}
+.cta-section .btn-primary{padding:.85rem 2rem;font-size:.85rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  background:var(--cyan);color:var(--dark);border:none;cursor:pointer;text-decoration:none;transition:all .3s;display:inline-flex;align-items:center;gap:.5rem}
+.cta-section .btn-primary:hover{box-shadow:0 0 30px rgba(0,240,255,.5)}
+
+footer{position:relative;z-index:1;padding:4rem 2rem 2rem;border-top:1px solid var(--border)}
+footer .inner{max-width:1300px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem}
+footer .brand{font-family:var(--font-mono);font-size:1.2rem;font-weight:900;color:var(--cyan);margin-bottom:.8rem}
+footer .brand+p{color:var(--text-dim);font-size:.82rem;line-height:1.7;max-width:300px}
+footer h5{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);margin-bottom:1rem}
+footer a{color:var(--text-dim);text-decoration:none;font-size:.82rem;display:block;margin-bottom:.5rem;transition:color .2s}
+footer a:hover{color:var(--cyan)}
+footer .bottom{max-width:1300px;margin:3rem auto 0;padding-top:1.5rem;border-top:1px solid var(--border);
+  display:flex;justify-content:space-between;font-size:.75rem;color:var(--text-dim);flex-wrap:wrap;gap:1rem}
+
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:768px){
+  nav .links{display:none;position:absolute;top:64px;left:0;width:100%;background:rgba(6,9,18,.98);
+    flex-direction:column;padding:1.5rem 2rem;gap:1.2rem;border-bottom:1px solid var(--border)}
+  nav .links.open{display:flex}
+  .menu-toggle{display:block}
+  footer .inner{grid-template-columns:1fr;gap:2rem}
+  .page-header{padding-top:120px}
+}
+</style>
+</head>
+<body>
+<div class="circuit-bg"></div>
+
+<nav id="nav">
+  <div class="inner">
+    <a href="index.html" class="logo"><span class="dot"></span>EMS-IOT</a>
+    <ul class="links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="products.html">Products</a></li>
+      <li><a href="capabilities.html">Capabilities</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="contact.html" class="cta-btn">Get Quote</a></li>
+    </ul>
+    <button class="menu-toggle" onclick="document.getElementById('navLinks').classList.toggle('open')" aria-label="Menu">&#9776;</button>
+  </div>
+</nav>
+
+<header class="page-header">
+  <h1><span class="cyan">//</span> Manufacturing Capabilities</h1>
+  <p>From prototype to production. 12 SMT lines, in-house testing, conformal coating, box build assembly. All under one roof in Shenzhen.</p>
+</header>
+
+<!-- Process Flow -->
+<div class="process-strip">
+  <div class="process-step reveal">
+    <div class="step-num">STEP 01</div>
+    <div class="step-icon">&#9737;</div>
+    <h4>Schematic & BOM Review</h4>
+    <p>DFM/DFT analysis, alternative component sourcing, cost-down proposals</p>
+  </div>
+  <div class="process-step reveal">
+    <div class="step-num">STEP 02</div>
+    <div class="step-icon">&#9699;</div>
+    <h4>Prototype Assembly</h4>
+    <p>7-day turnaround from Gerber to assembled prototype on our SMT lines</p>
+  </div>
+  <div class="process-step reveal">
+    <div class="step-num">STEP 03</div>
+    <div class="step-icon">&#9881;</div>
+    <h4>EVT / DVT Testing</h4>
+    <p>RF parametric, functional, environmental stress testing</p>
+  </div>
+  <div class="process-step reveal">
+    <div class="step-num">STEP 04</div>
+    <div class="step-icon">&#9741;</div>
+    <h4>Pre-Certification</h4>
+    <p>FCC/CE/ISED pre-compliance. EMI scan, spurious emissions check</p>
+  </div>
+  <div class="process-step reveal">
+    <div class="step-num">STEP 05</div>
+    <div class="step-icon">&#9762;</div>
+    <h4>Mass Production</h4>
+    <p>12 SMT lines, AOI, ICT, FCT. Ship within 4-6 weeks of PVT sign-off</p>
+  </div>
+</div>
+
+<!-- Capabilities detail -->
+<section class="section">
+  <div class="inner">
+    <h2><span class="cyan">//</span> Core Manufacturing Services</h2>
+    <p class="sec-sub">Full electronics manufacturing services with IoT specialization</p>
+    <div class="cap-grid">
+      <div class="cap-card reveal">
+        <div class="cap-header">
+          <div class="cap-num">01</div>
+          <h3>SMT Assembly</h3>
+        </div>
+        <p>High-speed surface mount technology lines for IoT module production at scale.</p>
+        <ul>
+          <li>12 Fuji NXT III / Yamaha YSM20R lines</li>
+          <li>0201 to 55x55mm component capability</li>
+          <li>BGA, QFN, LGA, WLCSP packages</li>
+          <li>0201 metric placement accuracy</li>
+          <li>Throughput: 3.2M CPH aggregate</li>
+          <li>Nitrogen-reflow for RoHS/lead-free</li>
+          <li>3D SPI (Solder Paste Inspection) on every line</li>
+          <li>2D AOI (Automated Optical Inspection) post-reflow</li>
+        </ul>
+      </div>
+
+      <div class="cap-card reveal">
+        <div class="cap-header">
+          <div class="cap-num">02</div>
+          <h3>DIP / Through-Hole</h3>
+        </div>
+        <p>Wave soldering and selective soldering for connectors, headers, and mixed-technology boards.</p>
+        <ul>
+          <li>3 wave soldering lines (lead-free)</li>
+          <li>2 selective soldering robots (ERSA)</li>
+          <li>Through-hole to SMT mixed assembly</li>
+          <li>Hand-soldering IPC-certified operators</li>
+          <li>Post-solder cleaning and inspection</li>
+        </ul>
+      </div>
+
+      <div class="cap-card reveal">
+        <div class="cap-header">
+          <div class="cap-num">03</div>
+          <h3>RF Testing & Tuning</h3>
+        </div>
+        <p>In-house RF lab for parametric testing and antenna matching. Critical for wireless IoT modules.</p>
+        <ul>
+          <li>Rohde & Schwarz ZVL vector network analyzer</li>
+          <li>Keysight EXG/N5172B signal generator</li>
+          <li>Keysight N9020B MXA spectrum analyzer</li>
+          <li>OTA anechoic chamber (0.7~6 GHz)</li>
+          <li>Impedance matching & antenna tuning</li>
+          <li>TX power, RX sensitivity, EVM, spurious</li>
+          <li>Full test reports per module serial number</li>
+        </ul>
+      </div>
+
+      <div class="cap-card reveal">
+        <div class="cap-header">
+          <div class="cap-num">04</div>
+          <h3>Conformal Coating</h3>
+        </div>
+        <p>Environmental protection for modules deployed in harsh outdoor or industrial conditions.</p>
+        <ul>
+          <li>2 automated selective coating machines (PVA)</li>
+          <li>Acrylic, silicone, and urethane coatings</li>
+          <li>UV cure + thermal cure options</li>
+          <li>IPC-CC-830 compliant application</li>
+          <li>UV inspection station for coverage verification</li>
+          <li>IP54/IP65/IP67 validated assemblies</li>
+        </ul>
+      </div>
+
+      <div class="cap-card reveal">
+        <div class="cap-header">
+          <div class="cap-num">05</div>
+          <h3>Box Build Assembly</h3>
+        </div>
+        <p>Complete turnkey product assembly. PCB into enclosure, with accessories, packaging, and labeling.</p>
+        <ul>
+          <li>3 dedicated box-build assembly lines</li>
+          <li>Enclosure assembly, wiring harness</li>
+          <li>Firmware flashing & functional test</li>
+          <li>Custom labeling, barcoding, serialization</li>
+          <li>Retail-ready packaging & shrink wrap</li>
+          <li>Amazon FBA-compliant labeling</li>
+        </ul>
+      </div>
+
+      <div class="cap-card reveal">
+        <div class="cap-header">
+          <div class="cap-num">06</div>
+          <h3>Quality Control</h3>
+        </div>
+        <p>Multi-stage inspection and testing from IQC to OQC. Zero defects is the goal.</p>
+        <ul>
+          <li>IQC: XRF RoHS screening, component verification</li>
+          <li>IPQC: Solder paste, reflow profile, first-article</li>
+          <li>AOI on every SMT line</li>
+          <li>ICT (In-Circuit Test) — Keysight 3070</li>
+          <li>FCT (Functional Circuit Test) — custom rigs</li>
+          <li>Burn-in / aging test (24-72 hrs per spec)</li>
+          <li>OQC AQL sampling per ISO 2859-1</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SMT Specs -->
+<section class="specs-section">
+  <div class="specs-grid">
+    <div class="spec-cell reveal"><div class="s-val">12</div><div class="s-label">SMT Lines</div></div>
+    <div class="spec-cell reveal"><div class="s-val">3.2M</div><div class="s-label">CPH Throughput</div></div>
+    <div class="spec-cell reveal"><div class="s-val">0201</div><div class="s-label">Min Component Size</div></div>
+    <div class="spec-cell reveal"><div class="s-val">0.3mm</div><div class="s-label">BGA Pitch Capability</div></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="inner">
+    <h2><span class="cyan">//</span> Equipment Arsenal</h2>
+    <p class="sec-sub">Every line equipped with top-tier Japanese and German machines</p>
+    <div class="equip-grid">
+      <div class="equip-item reveal"><div class="e-name">Fuji NXT III</div><div class="e-qty">x6 lines</div></div>
+      <div class="equip-item reveal"><div class="e-name">Yamaha YSM20R</div><div class="e-qty">x4 lines</div></div>
+      <div class="equip-item reveal"><div class="e-name">Yamaha YSM10</div><div class="e-qty">x2 lines</div></div>
+      <div class="equip-item reveal"><div class="e-name">Koh Young Zenith 3D SPI</div><div class="e-qty">x12 units</div></div>
+      <div class="equip-item reveal"><div class="e-name">Koh Young Zenith 2D AOI</div><div class="e-qty">x12 units</div></div>
+      <div class="equip-item reveal"><div class="e-name">Keysight 3070 ICT</div><div class="e-qty">x4 stations</div></div>
+      <div class="equip-item reveal"><div class="e-name">R&S ZVL VNA</div><div class="e-qty">x3 units</div></div>
+      <div class="equip-item reveal"><div class="e-name">Keysight N9020B MXA</div><div class="e-qty">x2 units</div></div>
+      <div class="equip-item reveal"><div class="e-name">ERSA Versaflow 4/55</div><div class="e-qty">x2 units</div></div>
+      <div class="equip-item reveal"><div class="e-name">PVA Delta 8 Coating</div><div class="e-qty">x2 units</div></div>
+      <div class="equip-item reveal"><div class="e-name">Nordson DAGE Bond Tester</div><div class="e-qty">x1 unit</div></div>
+      <div class="equip-item reveal"><div class="e-name">X-Rite XRF Analyzer</div><div class="e-qty">x2 units</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="border-top:1px solid var(--border)">
+  <div class="inner">
+    <h2><span class="cyan">//</span> Certifications Matrix</h2>
+    <p class="sec-sub">Every process certified. Every shipment compliant.</p>
+    <div class="cert-grid-mini">
+      <div class="cert-item reveal"><div class="c-badge">ISO 9001</div><div class="c-name">Quality Management</div><div class="c-desc">TUV Rheinland audited annually</div></div>
+      <div class="cert-item reveal"><div class="c-badge">ISO 14001</div><div class="c-name">Environmental Mgmt</div><div class="c-desc">RoHS lead-free production</div></div>
+      <div class="cert-item reveal"><div class="c-badge">IPC-A-610</div><div class="c-name">Class 3 Solder</div><div class="c-desc">Highest reliability standard</div></div>
+      <div class="cert-item reveal"><div class="c-badge">CE</div><div class="c-name">EU Compliance</div><div class="c-desc">EMC / RED / LVD directives</div></div>
+      <div class="cert-item reveal"><div class="c-badge">FCC</div><div class="c-name">USA Compliance</div><div class="c-desc">Part 15 / TCB filing support</div></div>
+      <div class="cert-item reveal"><div class="c-badge">RoHS 3</div><div class="c-name">Material Compliance</div><div class="c-desc">REACH SVHC declarations</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <h2>Ready to Build Your IoT Module?</h2>
+  <p>Send us your BOM and Gerber files. We return a quote and DFM report within 24 hours.</p>
+  <a href="contact.html" class="btn-primary">&#9654; Start Your Quote</a>
+</section>
+
+<footer>
+  <div class="inner">
+    <div>
+      <div class="brand">EMS-IOT</div>
+      <p>Premium IoT module manufacturing from Shenzhen, China. 15 years. 50M+ modules shipped. Your hardware partner from prototype to production.</p>
+    </div>
+    <div>
+      <h5>Quick Links</h5>
+      <a href="products.html">Products</a>
+      <a href="capabilities.html">Capabilities</a>
+      <a href="about.html">About Us</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div>
+      <h5>Contact</h5>
+      <a href="mailto:inquiry@ems-iot.com">inquiry@ems-iot.com</a>
+      <a href="#">WeChat: ems-iot</a>
+      <a href="#">WhatsApp: +86-755-xxxx</a>
+      <a href="#">Bao'an District, Shenzhen, Guangdong, China</a>
+    </div>
+  </div>
+  <div class="bottom">
+    <span>&copy; 2026 EMS-IOT. All rights reserved.</span>
+    <span>ISO 9001 &middot; ISO 14001 &middot; IPC-A-610 Class 3</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var observer = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible')}})
+  },{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(function(el){observer.observe(el)});
+})();
+</script>
+</body>
+</html>
